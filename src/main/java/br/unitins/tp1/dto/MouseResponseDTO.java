@@ -16,8 +16,8 @@ public record MouseResponseDTO(
     String iluminacao,
     String botao,
     String made,
-    Pegada pegada,
-    Conexao conexao,
+    Pegada idPegada,
+    Conexao idConexao,
     ConstrucaoResponseDTO idConstrucao,
     List<SensorResponseDTO> sensores
 ) {

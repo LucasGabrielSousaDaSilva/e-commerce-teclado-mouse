@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.MarcaDTO;
 import br.unitins.tp1.service.MarcaService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -42,7 +43,7 @@ public class MarcaResource {
     }
 
     @POST
-    public Response create(MarcaDTO dto) {
+    public Response create(@Valid MarcaDTO dto) {
         return Response.status(Status.CREATED).entity(marcaService.create(dto)).build();
     }
 

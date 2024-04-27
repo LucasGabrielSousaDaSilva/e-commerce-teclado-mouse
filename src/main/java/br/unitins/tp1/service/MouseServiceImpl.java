@@ -1,5 +1,6 @@
 package br.unitins.tp1.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.unitins.tp1.dto.MouseDTO;
@@ -7,6 +8,7 @@ import br.unitins.tp1.dto.MouseResponseDTO;
 import br.unitins.tp1.model.Conexao;
 import br.unitins.tp1.model.Mouse;
 import br.unitins.tp1.model.Pegada;
+import br.unitins.tp1.model.Sensor;
 import br.unitins.tp1.repository.ConstrucaoRepository;
 import br.unitins.tp1.repository.MouseRespository;
 import br.unitins.tp1.repository.SensorRepository;
@@ -47,8 +49,10 @@ public class MouseServiceImpl implements MouseService{
 
         mouse.setConstrucao(construcaoRepository.findById(dto.idConstrucao()));
 
+        mouse.setListaSensors(new ArrayList<Sensor>());
+
         for (Long sensor : dto.sensores()) {
-            if (sensor != null) {
+            if (sensor != null && sensor != 0) {
                 mouse.getListaSensors()
                 .add(sensorRepository.findById(sensor));
             }
@@ -81,7 +85,7 @@ public class MouseServiceImpl implements MouseService{
         mouse.setConstrucao(construcaoRepository.findById(dto.idConstrucao()));
         
         for (Long sensor : dto.sensores()) {
-            if (sensor != null) {
+            if (sensor != null && sensor != 0) {
                 mouse.getListaSensors()
                 .add(sensorRepository.findById(sensor));
             }

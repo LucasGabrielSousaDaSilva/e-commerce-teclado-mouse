@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.TecladoDTO;
 import br.unitins.tp1.service.TecladoService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -42,7 +43,7 @@ public class TecladoResource {
     }
 
     @POST
-    public Response create(TecladoDTO dto) {
+    public Response create(@Valid TecladoDTO dto) {
         return Response.status(Status.CREATED).entity(tecladoService.create(dto)).build();
     }
 

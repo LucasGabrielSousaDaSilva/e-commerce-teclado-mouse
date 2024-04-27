@@ -2,7 +2,7 @@ package br.unitins.tp1.model;
 
 public enum Conexao {
     CABO (1, "Cabo"),
-    SEMFIO (2, "Sem Fio");
+    SEMFIO (2, "Sem_Fio");
 
     private int id;
     private String nome;

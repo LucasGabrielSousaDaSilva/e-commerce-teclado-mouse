@@ -6,6 +6,7 @@ import br.unitins.tp1.dto.ModeloDTO;
 import br.unitins.tp1.dto.ModeloResponseDTO;
 import br.unitins.tp1.model.Modelo;
 import br.unitins.tp1.repository.ModeloRespository;
+import br.unitins.tp1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -20,12 +21,21 @@ public class ModeloServiceImpl implements ModeloService{
     @Override
     @Transactional
     public ModeloResponseDTO create(@Valid ModeloDTO dto) {
+        validarNomeModelo(dto.nome());
+        
         Modelo modelo = new Modelo();
 
         modelo.setNome(dto.nome());
         modelo.setSerie(dto.serie());
         modeloRespository.persist(modelo);
         return ModeloResponseDTO.valueOf(modelo);
+    }
+
+            public void validarNomeModelo(String nome){
+        Modelo modelo = modeloRespository.findByNomeModelo(nome);
+        if (modelo != null) {
+            throw new ValidationException("nome", "O nome "+ nome +" já existe.");
+        }
     }
 
     @Override

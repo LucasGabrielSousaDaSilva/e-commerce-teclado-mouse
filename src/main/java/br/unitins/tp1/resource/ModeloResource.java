@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.ModeloDTO;
 import br.unitins.tp1.service.ModeloService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -36,7 +37,7 @@ public class ModeloResource {
     }
 
     @POST
-    public Response create(ModeloDTO dto) {
+    public Response create(@Valid ModeloDTO dto) {
         return Response.status(Status.CREATED).entity(modeloService.create(dto)).build();
     }
 

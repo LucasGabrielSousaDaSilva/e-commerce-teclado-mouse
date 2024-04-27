@@ -13,7 +13,8 @@ public record TecladoResponseDTO(
     String design,
     String tipoTeclado,
     String iluminacao,
-    ConstrucaoResponseDTO idConstrucao
+    ConstrucaoResponseDTO idConstrucao,
+    MarcaResponseDTO idMarca
 ) {
     public static TecladoResponseDTO valueOf(Teclado teclado){
         return new TecladoResponseDTO(
@@ -27,7 +28,8 @@ public record TecladoResponseDTO(
             teclado.getDesign(), 
             teclado.getTipoTeclado(), 
             teclado.getIluminacao(), 
-            ConstrucaoResponseDTO.valueOf(teclado.getConstrucao()));
+            ConstrucaoResponseDTO.valueOf(teclado.getConstrucao()),
+            MarcaResponseDTO.valueOf(teclado.getMarca()));
     }
     
 }

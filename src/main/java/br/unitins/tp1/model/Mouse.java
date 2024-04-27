@@ -2,7 +2,6 @@ package br.unitins.tp1.model;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -25,8 +24,8 @@ public class Mouse extends Produto{
     @JoinColumn(name="id_construcao")
     private Construcao construcao;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id_sensor")
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "id_mouse")
     private List<Sensor> listaSensors;
 
     

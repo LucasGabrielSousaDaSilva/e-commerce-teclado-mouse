@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.MouseDTO;
 import br.unitins.tp1.service.MouseService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -42,7 +43,7 @@ public class MouseResource {
     }
 
     @POST
-    public Response create(MouseDTO dto) {
+    public Response create(@Valid MouseDTO dto) {
         return Response.status(Status.CREATED).entity(mouseService.create(dto)).build();
     }
 

@@ -6,6 +6,7 @@ import br.unitins.tp1.dto.TecladoDTO;
 import br.unitins.tp1.dto.TecladoResponseDTO;
 import br.unitins.tp1.model.Teclado;
 import br.unitins.tp1.repository.ConstrucaoRepository;
+import br.unitins.tp1.repository.MarcaRepository;
 import br.unitins.tp1.repository.TecladoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -20,6 +21,9 @@ public class TecladoServiceImpl implements TecladoService{
 
     @Inject
     public ConstrucaoRepository construcaoRepository;
+
+    @Inject
+    public MarcaRepository marcaRepository;
 
     @Override
     @Transactional
@@ -38,6 +42,8 @@ public class TecladoServiceImpl implements TecladoService{
        teclado.setIluminacao(dto.iluminacao());
 
        teclado.setConstrucao(construcaoRepository.findById(dto.idConstrucao()));
+
+       teclado.setMarca(marcaRepository.findById(dto.idMarca()));
 
     tecladoRepository.persist(teclado);
     return TecladoResponseDTO.valueOf(teclado);

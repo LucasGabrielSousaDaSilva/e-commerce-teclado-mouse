@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.SensorDTO;
 import br.unitins.tp1.service.SensorService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -17,7 +18,7 @@ import jakarta.ws.rs.core.Response.Status;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/Sensor")
+@Path("/sensor")
 public class SensorResource {
     
     @Inject
@@ -42,7 +43,7 @@ public class SensorResource {
     }
 
     @POST
-    public Response create(SensorDTO dto) {
+    public Response create(@Valid SensorDTO dto) {
         return Response.status(Status.CREATED).entity(sensorService.create(dto)).build();
     }
 

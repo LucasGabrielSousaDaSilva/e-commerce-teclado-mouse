@@ -22,11 +22,11 @@ public class ConstrucaoServiceImpl implements ConstrucaoService{
     @Transactional
     public ConstrucaoResponseDTO create(@Valid ConstrucaoDTO dto) {
         Construcao construcao = new Construcao();
-
         construcao.setPeso(dto.peso());
         construcao.setComprimento(dto.comprimento());
         construcao.setRevestimento(dto.revestimento());
         construcao.setCor(dto.cor());
+
         construcaoRepository.persist(construcao);
         return ConstrucaoResponseDTO.valueOf(construcao);
     }

@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.ConstrucaoDTO;
 import br.unitins.tp1.service.ConstrucaoService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -37,12 +38,12 @@ public class ConstrucaoResource {
 
     @GET
     @Path("/search/cor/{cor}")
-    public Response findByNome(@PathParam("cor") String cor) {
+    public Response findByCor(@PathParam("cor") String cor) {
         return Response.ok(construcaoService.findByCor(cor)).build();
     }
 
     @POST
-    public Response create(ConstrucaoDTO dto) {
+    public Response create(@Valid ConstrucaoDTO dto) {
         return Response.status(Status.CREATED).entity(construcaoService.create(dto)).build();
     }
 

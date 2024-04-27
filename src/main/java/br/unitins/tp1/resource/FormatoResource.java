@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.FormatoDTO;
 import br.unitins.tp1.service.FormatoService;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -37,7 +38,7 @@ public class FormatoResource {
     }
 
     @POST
-    public Response create(FormatoDTO dto) {
+    public Response create(@Valid FormatoDTO dto) {
         return Response.status(Status.CREATED).entity(formatoService.create(dto)).build();
     }
 

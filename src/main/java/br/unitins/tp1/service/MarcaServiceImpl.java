@@ -6,6 +6,7 @@ import br.unitins.tp1.dto.MarcaDTO;
 import br.unitins.tp1.dto.MarcaResponseDTO;
 import br.unitins.tp1.model.Marca;
 import br.unitins.tp1.repository.MarcaRepository;
+import br.unitins.tp1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -20,12 +21,21 @@ public class MarcaServiceImpl implements MarcaService{
     @Override
     @Transactional
     public MarcaResponseDTO create(@Valid MarcaDTO dto) {
-       Marca marca = new Marca();
+      validarNomeMarca(dto.nome());
+      
+        Marca marca = new Marca();
 
        marca.setNome(dto.nome());
        marca.setEmpresa(dto.empresa());
        marcaRepository.persist(marca);
        return MarcaResponseDTO.valueOf(marca);
+    }
+
+    public void validarNomeMarca(String nome){
+        Marca marca = marcaRepository.findByNomeMarca(nome);
+        if (marca != null) {
+            throw new ValidationException("nome", "O nome "+nome+" já existe.");
+        }
     }
 
     @Override

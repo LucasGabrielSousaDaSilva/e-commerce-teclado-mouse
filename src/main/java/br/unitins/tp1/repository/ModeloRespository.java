@@ -7,4 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class ModeloRespository implements PanacheRepository<Modelo>{
     
+        public Modelo findByNomeModelo(String nome){
+        return find("UPPER(nome) = ?1", nome.toUpperCase()).firstResult();
+    }
 }

@@ -8,6 +8,7 @@ import br.unitins.tp1.model.Sensor;
 import br.unitins.tp1.repository.FormatoRespository;
 import br.unitins.tp1.repository.ModeloRespository;
 import br.unitins.tp1.repository.SensorRepository;
+import br.unitins.tp1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -28,6 +29,8 @@ public class SensorServiceImpl implements SensorService{
     @Override
     @Transactional
     public SensorResponseDTO create(@Valid SensorDTO dto) {
+        validarNomeSensor(dto.nome());
+        
         Sensor sensor = new Sensor();
 
         sensor.setNome(dto.nome());
@@ -37,6 +40,13 @@ public class SensorServiceImpl implements SensorService{
         sensor.setFormato(formatoRespository.findById(dto.idFormato()));
         sensorRepository.persist(sensor);
         return SensorResponseDTO.valueOf(sensor);
+    }
+
+        public void validarNomeSensor(String nome){
+        Sensor sensor = sensorRepository.findByNomeSensor(nome);
+        if (sensor != null) {
+            throw new ValidationException("nome", "O nome "+ nome +" já existe.");
+        }
     }
 
     @Override
