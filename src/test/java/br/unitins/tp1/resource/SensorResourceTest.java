@@ -1,6 +1,7 @@
 package br.unitins.tp1.resource;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,16 @@ public class SensorResourceTest {
             .get("/sensor/{id}")
             .then()
             .statusCode(200);
+    }
+
+    @Test
+    public void FindByNomeTest(){
+        given()
+            .when()
+            .get("/sensor/search/nome/Snow")
+            .then()
+            .statusCode(200)
+            .body("nome", everyItem(is("Snow")));
     }
 
     @Test

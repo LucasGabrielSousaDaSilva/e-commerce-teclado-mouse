@@ -7,7 +7,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 
 import static io.restassured.RestAssured.given;
-
+import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
@@ -30,6 +30,16 @@ public class MarcaResourceTest {
             .then()
             .statusCode(200)
             .body("id", is(1));
+    }
+
+    @Test
+    public void FindByNomeTest(){
+        given()
+            .when()
+            .get("/marca/search/nome/Speed")
+            .then()
+            .statusCode(200)
+            .body("nome", everyItem(is("Speed")));
     }
 
     @Test

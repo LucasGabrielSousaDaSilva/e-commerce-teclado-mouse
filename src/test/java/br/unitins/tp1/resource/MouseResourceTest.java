@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.everyItem;
 
 import java.util.List;
 
@@ -32,6 +33,16 @@ public class MouseResourceTest {
             .then()
             .statusCode(200)
             .body("id", is(1));
+    }
+
+    @Test
+    public void FindByNomeTest(){
+        given()
+            .when()
+            .get("/mouse/search/nome/dragon")
+            .then()
+            .statusCode(200)
+            .body("nome", everyItem(is("dragon")));
     }
 
     @Test

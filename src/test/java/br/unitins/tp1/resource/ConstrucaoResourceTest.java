@@ -7,6 +7,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -31,6 +32,16 @@ public class ConstrucaoResourceTest {
             .then()
             .statusCode(200)
             .body("id", is(1));
+    }
+
+    @Test
+    public void findByCor(){
+        given()
+            .when()
+            .get("/construcao/search/cor/Preto")
+            .then()
+            .statusCode(200)
+            .body("cor", everyItem(is("Preto")));
     }
 
     @Test

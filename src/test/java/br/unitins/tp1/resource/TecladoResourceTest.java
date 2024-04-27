@@ -4,6 +4,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 
+import static org.hamcrest.Matchers.everyItem;
+
 import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.TecladoDTO;
@@ -31,6 +33,16 @@ public class TecladoResourceTest {
             .then()
             .statusCode(200)
             .body("id", is(1));
+    }
+
+    @Test
+    public void FindByNomeTest(){
+        given()
+            .when()
+            .get("/teclado/search/nome/dagon")
+            .then()
+            .statusCode(200)
+            .body("nome", everyItem(is("dagon")));
     }
 
     @Test
