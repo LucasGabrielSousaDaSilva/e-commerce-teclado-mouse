@@ -1,0 +1,126 @@
+@startuml
+
+title Mouse Diagram
+
+class Mouse{
+  -iluminacao : String
+  -botao : String
+  -made : String
+}
+
+class Teclado{
+  -layout : String
+  -design : String
+  -tipoTeclado : String
+  -iluminacao : String
+}
+
+enum Pegada{
+  +claw : Integer
+  +fingertip : Integer
+  +palm : Integer
+}
+
+class Produto{
+  -nome : String
+  -modelo : String
+  -descricao : String
+  -valor : Float
+  -quantidade : Integer
+}
+
+enum Conexao{
+  +cabo : Integer
+  +semFio : Integer
+}
+
+class Marca{
+  -nome : String
+  -empresa : String
+}
+
+class Construcao{
+  -peso : Float
+  -comprimento : Float
+  -revestimento : String
+  -cor : String
+}
+
+class Sensor{
+  -nome : String
+  -dpi : Float
+  -ips : Float
+}
+
+class Formato{
+  -comprimento : Float
+  -largura : Float
+}
+
+class Modelo{
+  -nome : String
+  -serie : String
+}
+
+class Pedido{
+
+}
+
+class ItemPedido{
+
+}
+
+class Funcionario{
+ -
+}
+
+class Cliente{
+ -
+}
+
+Class Pessoa{
+ -nome : String
+ -idade: Integer
+ -email : String
+ -endereco : String
+}
+
+enum Sexo{
+ + MASCULINO : int
+ + FEMININO : int
+}
+
+Class Usuario{
+ -username : String
+ -senha : String
+}
+
+Class Login{
+ -email : String
+ -senha : String
+}
+
+Pegada "1"<--"*" Mouse
+Construcao "1"<--o "*" Mouse
+Sensor "*"<--*"1" Mouse
+Sensor "*"-->"1" Modelo
+Sensor "*"-->"1" Formato
+Mouse --|> Produto
+Produto "1"-->"*" Marca
+Conexao "1"<--"*" Produto
+
+Teclado "*" o-->"1" Construcao
+Teclado --|> Produto
+
+Usuario --> Login
+Pessoa --> Usuario
+Pessoa --> Sexo
+Cliente --> Pessoa
+Funcionario --> Pessoa
+
+Pedido --> Cliente
+Pedido *--> ItemPedido
+ItemPedido --> Produto
+
+
+@enduml
