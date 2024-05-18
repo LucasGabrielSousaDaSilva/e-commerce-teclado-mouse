@@ -71,18 +71,18 @@ class ItemPedido{
 }
 
 class Funcionario{
- -
+ - cargo: String
+ - salario: Double
 }
 
 class Cliente{
- -
+ -endereco : String 
 }
 
 Class Pessoa{
  -nome : String
  -idade: Integer
  -email : String
- -endereco : String
 }
 
 enum Sexo{
