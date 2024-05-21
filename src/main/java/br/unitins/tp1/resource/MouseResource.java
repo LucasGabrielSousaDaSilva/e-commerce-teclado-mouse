@@ -2,6 +2,7 @@ package br.unitins.tp1.resource;
 
 import br.unitins.tp1.dto.MouseDTO;
 import br.unitins.tp1.service.MouseService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -32,11 +33,13 @@ public class MouseResource {
     }
 
     @GET
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll() {
         return Response.ok(mouseService.findAll()).build();
     }
 
     @GET
+    @RolesAllowed("Cliente")
     @Path("/search/nome/{nome}")
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(mouseService.findByNome(nome)).build();

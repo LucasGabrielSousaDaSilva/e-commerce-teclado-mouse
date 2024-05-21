@@ -1,10 +1,12 @@
 package br.unitins.tp1.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
-public class Funcionario {
+@Entity
+public class Funcionario extends DefautEntity{
 
     @Column(length = 60, nullable = false)
     private String cargo;
@@ -30,6 +32,14 @@ public class Funcionario {
 
     public void setSalario(Double salario) {
         this.salario = salario;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     

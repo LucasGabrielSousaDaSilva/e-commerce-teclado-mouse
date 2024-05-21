@@ -1,10 +1,12 @@
 package br.unitins.tp1.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
-public class Pessoa {
+@Entity
+public class Pessoa extends DefautEntity{
     @Column(length = 60, nullable = false)
     private String nome;
     @Column(length = 60, nullable = false)
@@ -33,6 +35,13 @@ public class Pessoa {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     

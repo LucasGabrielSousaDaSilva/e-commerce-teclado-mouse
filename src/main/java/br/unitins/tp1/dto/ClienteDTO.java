@@ -1,8 +1,13 @@
 package br.unitins.tp1.dto;
 
 public record ClienteDTO(
-    String endereço,
-    Long idPessoa
+    String nome,
+    Integer idade,
+    String email,
+    String endereco,
+    String username,
+    String senha
+    
 ) {
     
 }

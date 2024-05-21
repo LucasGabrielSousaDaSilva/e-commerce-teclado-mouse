@@ -11,7 +11,6 @@ public class ValidationError extends br.unitins.tp1.util.Error{
 
     public ValidationError(String code, String message) {
         super(code, message);
-        //TODO Auto-generated constructor stub
     }
 
     public void addFieldError(String fieldName, String message) {

@@ -1,10 +1,12 @@
 package br.unitins.tp1.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
-public class Cliente {
+@Entity
+public class Cliente extends DefautEntity{
 
     @Column(length = 60, nullable = false)
     private String endereço;
@@ -19,6 +21,14 @@ public class Cliente {
 
     public void setEndereço(String endereço) {
         this.endereço = endereço;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     

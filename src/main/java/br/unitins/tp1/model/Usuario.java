@@ -1,8 +1,10 @@
 package br.unitins.tp1.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
-public class Usuario {
+@Entity
+public class Usuario extends DefautEntity{
 
     @Column(length = 60, nullable = false)
     private String username;
@@ -25,4 +27,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    
 }
