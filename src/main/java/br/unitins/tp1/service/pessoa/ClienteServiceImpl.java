@@ -49,6 +49,7 @@ public class ClienteServiceImpl implements ClienteService{
         pessoa.setNome(dto.nome());
         pessoa.setIdade(dto.idade());
         pessoa.setEmail(dto.email());
+        pessoa.setUsuario(usuario);
 
         // salvando pessoa
         pessoaRepository.persist(pessoa);

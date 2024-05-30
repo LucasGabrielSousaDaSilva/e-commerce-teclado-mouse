@@ -7,10 +7,9 @@ import jakarta.persistence.Entity;
 @Entity
 public class Usuario extends DefautEntity{
 
-    @Column(length = 60, nullable = false)
+    @Column(unique = true)
     private String username;
 
-    @Column(length = 255, nullable = false)
     private String senha;
 
     public String getUsername() {

@@ -30,7 +30,7 @@ public class Pedido extends DefautEntity{
     private Cliente cliente;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id_itemPedido")
+    @JoinColumn(name = "id_pedido")
     private List<ItemPedido> itens;
 
 

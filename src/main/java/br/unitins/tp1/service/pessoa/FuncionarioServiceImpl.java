@@ -50,6 +50,7 @@ public class FuncionarioServiceImpl implements FuncionarioService{
         pessoa.setNome(dto.nome());
         pessoa.setIdade(dto.idade());
         pessoa.setEmail(dto.email());
+        pessoa.setUsuario(usuario);
 
         // salvando pessoa
         pessoaRepository.persist(pessoa);

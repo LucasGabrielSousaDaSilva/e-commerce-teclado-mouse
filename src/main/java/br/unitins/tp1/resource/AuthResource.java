@@ -1,5 +1,6 @@
-package br.unitins.tp1.dto.auth;
+package br.unitins.tp1.resource;
 
+import br.unitins.tp1.dto.auth.AuthUsuarioDTO;
 import br.unitins.tp1.dto.pessoa.UsuarioResponseDTO;
 import br.unitins.tp1.service.hash.HashService;
 import br.unitins.tp1.service.jwt.JwtService;
