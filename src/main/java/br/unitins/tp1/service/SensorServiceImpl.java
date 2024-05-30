@@ -2,9 +2,9 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.SensorDTO;
-import br.unitins.tp1.dto.SensorResponseDTO;
-import br.unitins.tp1.model.Sensor;
+import br.unitins.tp1.dto.produto.SensorDTO;
+import br.unitins.tp1.dto.produto.SensorResponseDTO;
+import br.unitins.tp1.model.ecommerce.Sensor;
 import br.unitins.tp1.repository.FormatoRespository;
 import br.unitins.tp1.repository.ModeloRespository;
 import br.unitins.tp1.repository.SensorRepository;

@@ -2,9 +2,9 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.ConstrucaoDTO;
-import br.unitins.tp1.dto.ConstrucaoResponseDTO;
-import br.unitins.tp1.model.Construcao;
+import br.unitins.tp1.dto.produto.ConstrucaoDTO;
+import br.unitins.tp1.dto.produto.ConstrucaoResponseDTO;
+import br.unitins.tp1.model.ecommerce.Construcao;
 import br.unitins.tp1.repository.ConstrucaoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

@@ -2,9 +2,9 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.ModeloDTO;
-import br.unitins.tp1.dto.ModeloResponseDTO;
-import br.unitins.tp1.model.Modelo;
+import br.unitins.tp1.dto.produto.ModeloDTO;
+import br.unitins.tp1.dto.produto.ModeloResponseDTO;
+import br.unitins.tp1.model.ecommerce.Modelo;
 import br.unitins.tp1.repository.ModeloRespository;
 import br.unitins.tp1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;

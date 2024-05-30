@@ -1,7 +1,7 @@
 package br.unitins.tp1.resource;
 
-import br.unitins.tp1.dto.ClienteDTO;
-import br.unitins.tp1.service.ClienteService;
+import br.unitins.tp1.dto.pessoa.ClienteDTO;
+import br.unitins.tp1.service.pessoa.ClienteService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;

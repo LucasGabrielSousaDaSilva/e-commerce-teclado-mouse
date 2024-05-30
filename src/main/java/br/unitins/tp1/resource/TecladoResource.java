@@ -1,6 +1,6 @@
 package br.unitins.tp1.resource;
 
-import br.unitins.tp1.dto.TecladoDTO;
+import br.unitins.tp1.dto.produto.TecladoDTO;
 import br.unitins.tp1.service.TecladoService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;

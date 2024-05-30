@@ -3,8 +3,8 @@ package br.unitins.tp1.model.pedido;
 import java.time.LocalDate;
 import java.util.List;
 
-import br.unitins.tp1.model.Cliente;
 import br.unitins.tp1.model.DefautEntity;
+import br.unitins.tp1.model.pessoa.Cliente;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

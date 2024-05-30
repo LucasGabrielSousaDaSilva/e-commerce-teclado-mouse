@@ -2,8 +2,8 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.MarcaDTO;
-import br.unitins.tp1.dto.MarcaResponseDTO;
+import br.unitins.tp1.dto.produto.MarcaDTO;
+import br.unitins.tp1.dto.produto.MarcaResponseDTO;
 import jakarta.validation.Valid;
 
 public interface MarcaService {

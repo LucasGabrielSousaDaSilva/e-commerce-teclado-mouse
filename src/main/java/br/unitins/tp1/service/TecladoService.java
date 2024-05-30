@@ -2,8 +2,8 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.TecladoDTO;
-import br.unitins.tp1.dto.TecladoResponseDTO;
+import br.unitins.tp1.dto.produto.TecladoDTO;
+import br.unitins.tp1.dto.produto.TecladoResponseDTO;
 import jakarta.validation.Valid;
 
 public interface TecladoService {

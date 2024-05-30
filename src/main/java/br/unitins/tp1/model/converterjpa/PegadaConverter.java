@@ -1,6 +1,6 @@
 package br.unitins.tp1.model.converterjpa;
 
-import br.unitins.tp1.model.Pegada;
+import br.unitins.tp1.model.ecommerce.Pegada;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

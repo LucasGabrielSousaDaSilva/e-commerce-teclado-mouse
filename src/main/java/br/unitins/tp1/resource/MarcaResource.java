@@ -1,6 +1,6 @@
 package br.unitins.tp1.resource;
 
-import br.unitins.tp1.dto.MarcaDTO;
+import br.unitins.tp1.dto.produto.MarcaDTO;
 import br.unitins.tp1.service.MarcaService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

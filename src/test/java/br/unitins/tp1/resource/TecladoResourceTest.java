@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.everyItem;
 
 import org.junit.jupiter.api.Test;
 
-import br.unitins.tp1.dto.TecladoDTO;
+import br.unitins.tp1.dto.produto.TecladoDTO;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 

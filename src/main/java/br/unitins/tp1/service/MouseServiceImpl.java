@@ -3,12 +3,12 @@ package br.unitins.tp1.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.unitins.tp1.dto.MouseDTO;
-import br.unitins.tp1.dto.MouseResponseDTO;
-import br.unitins.tp1.model.Conexao;
-import br.unitins.tp1.model.Mouse;
-import br.unitins.tp1.model.Pegada;
-import br.unitins.tp1.model.Sensor;
+import br.unitins.tp1.dto.produto.MouseDTO;
+import br.unitins.tp1.dto.produto.MouseResponseDTO;
+import br.unitins.tp1.model.ecommerce.Conexao;
+import br.unitins.tp1.model.ecommerce.Mouse;
+import br.unitins.tp1.model.ecommerce.Pegada;
+import br.unitins.tp1.model.ecommerce.Sensor;
 import br.unitins.tp1.repository.ConstrucaoRepository;
 import br.unitins.tp1.repository.MouseRespository;
 import br.unitins.tp1.repository.SensorRepository;

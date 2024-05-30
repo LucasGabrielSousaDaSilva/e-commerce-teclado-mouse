@@ -2,8 +2,8 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.MouseDTO;
-import br.unitins.tp1.dto.MouseResponseDTO;
+import br.unitins.tp1.dto.produto.MouseDTO;
+import br.unitins.tp1.dto.produto.MouseResponseDTO;
 import jakarta.validation.Valid;
 
 public interface MouseService {

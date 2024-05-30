@@ -2,7 +2,7 @@ package br.unitins.tp1.repository;
 
 import java.util.List;
 
-import br.unitins.tp1.model.Construcao;
+import br.unitins.tp1.model.ecommerce.Construcao;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

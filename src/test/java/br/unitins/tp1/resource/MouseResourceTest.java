@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import br.unitins.tp1.dto.MouseDTO;
+import br.unitins.tp1.dto.produto.MouseDTO;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 

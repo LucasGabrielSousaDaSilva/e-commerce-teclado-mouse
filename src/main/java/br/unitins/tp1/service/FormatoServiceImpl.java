@@ -2,9 +2,9 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.FormatoDTO;
-import br.unitins.tp1.dto.FormatoResponseDTO;
-import br.unitins.tp1.model.Formato;
+import br.unitins.tp1.dto.produto.FormatoDTO;
+import br.unitins.tp1.dto.produto.FormatoResponseDTO;
+import br.unitins.tp1.model.ecommerce.Formato;
 import br.unitins.tp1.repository.FormatoRespository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

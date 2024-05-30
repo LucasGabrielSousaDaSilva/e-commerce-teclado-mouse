@@ -1,6 +1,6 @@
 package br.unitins.tp1.resource;
 
-import br.unitins.tp1.dto.MouseDTO;
+import br.unitins.tp1.dto.produto.MouseDTO;
 import br.unitins.tp1.service.MouseService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;

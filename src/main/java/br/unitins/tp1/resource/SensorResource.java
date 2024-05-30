@@ -1,6 +1,6 @@
 package br.unitins.tp1.resource;
 
-import br.unitins.tp1.dto.SensorDTO;
+import br.unitins.tp1.dto.produto.SensorDTO;
 import br.unitins.tp1.service.SensorService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

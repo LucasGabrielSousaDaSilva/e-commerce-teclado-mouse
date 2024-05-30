@@ -5,7 +5,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.jupiter.api.Test;
 
-import br.unitins.tp1.dto.FormatoDTO;
+import br.unitins.tp1.dto.produto.FormatoDTO;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 

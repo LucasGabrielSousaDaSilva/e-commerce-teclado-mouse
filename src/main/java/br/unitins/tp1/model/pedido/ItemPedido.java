@@ -1,7 +1,7 @@
 package br.unitins.tp1.model.pedido;
 
 import br.unitins.tp1.model.DefautEntity;
-import br.unitins.tp1.model.Produto;
+import br.unitins.tp1.model.ecommerce.Produto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

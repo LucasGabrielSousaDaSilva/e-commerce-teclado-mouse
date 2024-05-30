@@ -2,8 +2,8 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.ConstrucaoDTO;
-import br.unitins.tp1.dto.ConstrucaoResponseDTO;
+import br.unitins.tp1.dto.produto.ConstrucaoDTO;
+import br.unitins.tp1.dto.produto.ConstrucaoResponseDTO;
 import jakarta.validation.Valid;
 
 public interface ConstrucaoService {

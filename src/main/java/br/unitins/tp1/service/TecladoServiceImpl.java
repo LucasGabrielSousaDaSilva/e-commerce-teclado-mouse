@@ -2,9 +2,9 @@ package br.unitins.tp1.service;
 
 import java.util.List;
 
-import br.unitins.tp1.dto.TecladoDTO;
-import br.unitins.tp1.dto.TecladoResponseDTO;
-import br.unitins.tp1.model.Teclado;
+import br.unitins.tp1.dto.produto.TecladoDTO;
+import br.unitins.tp1.dto.produto.TecladoResponseDTO;
+import br.unitins.tp1.model.ecommerce.Teclado;
 import br.unitins.tp1.repository.ConstrucaoRepository;
 import br.unitins.tp1.repository.MarcaRepository;
 import br.unitins.tp1.repository.TecladoRepository;

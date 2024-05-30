@@ -2,7 +2,7 @@ package br.unitins.tp1.resource;
 
 import org.junit.jupiter.api.Test;
 
-import br.unitins.tp1.dto.MarcaDTO;
+import br.unitins.tp1.dto.produto.MarcaDTO;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 

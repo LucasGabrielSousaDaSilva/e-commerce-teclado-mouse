@@ -3,7 +3,7 @@ package br.unitins.tp1.dto.pedido;
 import java.time.LocalDate;
 import java.util.List;
 
-import br.unitins.tp1.dto.ClienteResponseDTO;
+import br.unitins.tp1.dto.pessoa.ClienteResponseDTO;
 import br.unitins.tp1.model.pedido.Pedido;
 import br.unitins.tp1.model.pedido.StatusPagamento;
 import br.unitins.tp1.model.pedido.StatusPedido;
