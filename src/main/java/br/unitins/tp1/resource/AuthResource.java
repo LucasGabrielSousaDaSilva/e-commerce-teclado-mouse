@@ -46,7 +46,7 @@ public class AuthResource {
             return Response.status(Status.NOT_FOUND).build();
         }
         return Response.ok(usuario)
-            .header("Authorization", jwtService.generateJwt(usuario))
+            .header("Authorization", jwtService.generateJwt(usuario, dto.perfil()))
             .build();
     }
     

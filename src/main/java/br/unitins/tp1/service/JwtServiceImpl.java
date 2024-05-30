@@ -15,12 +15,16 @@ public class JwtServiceImpl implements JwtService{
     private static final Duration EXPIRATION_TIME = Duration.ofHours(24);
 
     @Override
-    public String generateJwt(UsuarioResponseDTO dto) {
+    public String generateJwt(UsuarioResponseDTO dto, int perfil) {
         Instant now = Instant.now();
         Instant expiryDate = now.plus(EXPIRATION_TIME);
 
         Set<String> roles = new HashSet<String>();
-        roles.add("Funcionario");
+        if(perfil == 1){
+            roles.add("Funcionario");
+        }else if (perfil == 2){
+            roles.add("Cliente");
+        }
 
         return Jwt.issuer("unitins-jwt")
             .subject(dto.username())

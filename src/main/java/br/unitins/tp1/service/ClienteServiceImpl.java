@@ -3,8 +3,8 @@ package br.unitins.tp1.service;
 import java.util.List;
 
 import br.unitins.tp1.dto.ClienteDTO;
-import br.unitins.tp1.dto.ClienteResponseDTO;
 import br.unitins.tp1.dto.UsuarioResponseDTO;
+import br.unitins.tp1.dto.ClienteResponseDTO;
 import br.unitins.tp1.model.Cliente;
 import br.unitins.tp1.model.Pessoa;
 import br.unitins.tp1.model.Usuario;

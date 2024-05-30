@@ -1,6 +1,6 @@
-@startuml
+@startuml Mouse Teclado Diagram
 
-title Mouse Diagram
+title Mouse Teclado Diagram
 
 class Mouse{
   -iluminacao : String
@@ -63,11 +63,42 @@ class Modelo{
 }
 
 class Pedido{
-
+  - valorTotal: Double
+  - dataEnvio: LocalDate
 }
 
 class ItemPedido{
+ - valor: Double
+ - quantidade: Integer
+ - desconto: Double
+}
 
+class FormaPagamento {
+    - parcela: int
+    - dataPagamento: LocalDateTime
+}
+
+enum TipoPagamento{
+  + CREDITO: int
+  + DEBITO: int
+  + PIX: int
+}
+
+enum StatusPedido {
+  - EM_PROCESSAMENTO: int
+  - EM_TRANSITO: int
+  - COM_TRANSPORTADORA: int
+  - ENTREGUE: int
+  - CANCELADO: int
+}
+
+enum StatusPagamento{                         
+  - AGUARDADO_PAGAMENTO: int
+  - EM_PROCESSAMENTO: int
+  - PAGAMENTO_CONFIRMADO: int
+  - PAGAMENTO_RECUSADO: int
+  - PAGAMENTO_CANCELADO: int
+  - PAGO: int
 }
 
 class Funcionario{
@@ -118,9 +149,14 @@ Pessoa --> Sexo
 Cliente --> Pessoa
 Funcionario --> Pessoa
 
-Pedido --> Cliente
-Pedido *--> ItemPedido
-ItemPedido --> Produto
+Pedido "*" --> "1" Cliente
+Pedido "1" *--> "*" ItemPedido
+ItemPedido "*" --> "1" Produto
+
+Pedido --> FormaPagamento
+FormaPagamento --> TipoPagamento
+StatusPagamento <-- Pedido
+StatusPedido <-- Pedido
 
 
 @enduml
