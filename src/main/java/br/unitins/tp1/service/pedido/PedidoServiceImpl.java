@@ -7,12 +7,14 @@ import java.util.List;
 import br.unitins.tp1.dto.pedido.ItemPedidoDTO;
 import br.unitins.tp1.dto.pedido.PedidoDTO;
 import br.unitins.tp1.dto.pedido.PedidoResponseDTO;
+import br.unitins.tp1.model.ecommerce.Produto;
 import br.unitins.tp1.model.pedido.ItemPedido;
 import br.unitins.tp1.model.pedido.Pedido;
 import br.unitins.tp1.repository.ProdutoRepository;
 import br.unitins.tp1.repository.pedido.FormaPagamentoRepository;
 import br.unitins.tp1.repository.pedido.PedidoRepository;
 import br.unitins.tp1.repository.pessoa.ClienteRepository;
+import br.unitins.tp1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -37,28 +39,57 @@ public class PedidoServiceImpl implements PedidoService{
     @Transactional
     public PedidoResponseDTO create(@Valid PedidoDTO dto) {
         Pedido pedido = new Pedido();
-        pedido.getValorTotal();
+  
         pedido.setData(LocalDate.now());
+        pedido.setFormaPagamento(formaPagamentoRepository.findById(dto.id_formaPagamento()));
+        pedido.setCliente(clienteRepository.findById(dto.idCliente()));       
 
         List<ItemPedido> itens = new ArrayList<ItemPedido>();
+        double total = 0;
+
         for (ItemPedidoDTO itemDTO : dto.itens()) {
             ItemPedido item = new ItemPedido();
+            Produto produto = produtoRepository.findById(itemDTO.idProduto());
 
-            item.setValor(itemDTO.valor());
-            item.setDesconto(itemDTO.desconto());
             item.setQuantidade(itemDTO.quantidade());
             item.setProduto(produtoRepository.findById(itemDTO.idProduto()));
+
+            if (item.getQuantidade() <= item.getProduto().getQuantidade()) {
+                item.getProduto().setQuantidade(item.getProduto().getQuantidade() - item.getQuantidade());
+            } else {
+                throw new ValidationException("Estoque Insuficiente", 
+                                             "estoque insuficiente do produto: "+produto.getNome()
+                                             +"\n"
+                                             +"Estoque do produto:"+ produto.getQuantidade());
+            }
+
+            total += calcularValorTotal(item.getProduto(), item);
+            total = total - (total * calcularDesconto(item));
 
             itens.add(item);
         }
         pedido.setItens(itens);
-
-        pedido.setFormaPagamento(formaPagamentoRepository.findById(dto.id_formaPagamento()));
-
-        pedido.setCliente(clienteRepository.findById(dto.idCliente()));
+        pedido.setValorTotal(total);
 
         pedidoRepository.persist(pedido);
         return PedidoResponseDTO.valueOf(pedido);
+    }
+
+    private double calcularDesconto(ItemPedido item) {
+
+        double desconto = 0;
+        if (item.getQuantidade() == 4) {
+            desconto = 0.40;
+        }
+        if (item.getQuantidade() >= 6) {
+            desconto = 0.60;
+        }
+        return desconto;
+    }
+
+    private double calcularValorTotal(Produto produto, ItemPedido item) {
+        double precoProduto = produto.getValor();
+        return precoProduto * item.getQuantidade();
     }
 
     @Override

@@ -43,11 +43,16 @@ public class AuthResource {
         } else if (dto.perfil() == 2) { // perfil 2
             usuario = clienteService.login(dto.username(), hash);
         } else {
-            return Response.status(Status.NOT_FOUND).build();
+            return Response.status(Status.NOT_FOUND).header("Perfil", "perfis existentes: 1-cliente | 2-funcionario").build();
         }
-        return Response.ok(usuario)
-            .header("Authorization", jwtService.generateJwt(usuario, dto.perfil()))
-            .build();
+        if (usuario!=null) {
+            return Response.ok(usuario)
+                .header("Authorization", jwtService.generateJwt(usuario, dto.perfil()))
+                .build();
+        }else{
+            return Response.status(Status.NOT_FOUND).header("ERRO","Usuário ou senha incorretos").build();
+        }
+        
     }
     
 }

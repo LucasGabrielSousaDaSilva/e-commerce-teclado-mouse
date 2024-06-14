@@ -12,6 +12,7 @@ import br.unitins.tp1.repository.pessoa.ClienteRepository;
 import br.unitins.tp1.repository.pessoa.PessoaRepository;
 import br.unitins.tp1.repository.pessoa.UsuarioRepository;
 import br.unitins.tp1.service.hash.HashService;
+import br.unitins.tp1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -64,16 +65,32 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Override
     @Transactional
-    public void update(Long id, ClienteDTO dto) {
+    public void update(Long id, ClienteDTO dto) throws ValidationException{
+        
+        Usuario usuario = usuarioRepository.findById(id);
         Cliente cliente = clienteRepository.findById(id);
         Pessoa pessoa = pessoaRepository.findById(id);
 
-        pessoa.setNome(dto.nome());
-        pessoa.setIdade(dto.idade());
-        pessoa.setEmail(dto.email());
-        cliente.setEndereço(dto.endereco());
-        cliente.setPessoa(pessoa);
+        if(usuario != null){
+            usuario.setUsername(dto.username());
+            // fazer hash da nova senha
+            usuario.setSenha(hashService.getHashSenha(dto.senha()));
+        } else {
+            throw new ValidationException("Usuario", "inexistente");
+        }
+        
+        if (pessoa != null) {
+            pessoa.setNome(dto.nome());
+            pessoa.setIdade(dto.idade());
+            pessoa.setEmail(dto.email());  
+        } else
+            throw new ValidationException("Pessoa", "inexistente");
 
+        if (cliente != null) {
+            cliente.setEndereço(dto.endereco());
+            cliente.setPessoa(pessoa);
+        }else
+            throw new ValidationException("Cliente", "inexistente");
     }
 
     @Override

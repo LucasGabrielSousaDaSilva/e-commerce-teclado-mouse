@@ -13,6 +13,7 @@ public record TecladoResponseDTO(
     String design,
     String tipoTeclado,
     String iluminacao,
+    String nomeImagem,
     ConstrucaoResponseDTO idConstrucao,
     MarcaResponseDTO idMarca
 ) {
@@ -28,6 +29,7 @@ public record TecladoResponseDTO(
             teclado.getDesign(), 
             teclado.getTipoTeclado(), 
             teclado.getIluminacao(), 
+            teclado.getNomeImagem(),
             ConstrucaoResponseDTO.valueOf(teclado.getConstrucao()),
             MarcaResponseDTO.valueOf(teclado.getMarca()));
     }

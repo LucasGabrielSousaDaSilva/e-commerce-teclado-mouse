@@ -18,6 +18,7 @@ public record MouseResponseDTO(
     String made,
     Pegada idPegada,
     Conexao idConexao,
+    String nomeImagem,
     ConstrucaoResponseDTO idConstrucao,
     List<SensorResponseDTO> sensores
 ) {
@@ -37,6 +38,7 @@ public record MouseResponseDTO(
             mouse.getMade(), 
             mouse.getPegada(),
             mouse.getConexao(),
+            mouse.getNomeImagem(),
             ConstrucaoResponseDTO.valueOf(mouse.getConstrucao()), 
             lista);
     }

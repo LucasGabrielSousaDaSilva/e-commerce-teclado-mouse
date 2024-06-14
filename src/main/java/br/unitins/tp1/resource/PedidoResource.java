@@ -2,6 +2,7 @@ package br.unitins.tp1.resource;
 
 import br.unitins.tp1.dto.pedido.PedidoDTO;
 import br.unitins.tp1.service.pedido.PedidoService;
+import io.quarkus.logging.Log;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -25,22 +26,26 @@ public class PedidoResource {
     @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") long id){
+        Log.info("Executando o metodo findById. Id: %s"); 
         return Response.ok(pedidoService.findById(id)).build();
     }
 
     @GET
     public Response findAll(){
+        Log.info("Executando o findAll");
         return Response.ok(pedidoService.findAll()).build();
     }
 
     @GET
     @Path("/search/cliente/{cliente}")
     public Response findByCliente(@PathParam("cliente") Long cliente){
+        Log.info("Executando o metodo findByCliente");
         return Response.ok(pedidoService.findByCliente(cliente)).build();
     }
 
     @POST
     public Response create(PedidoDTO dto) {
+        Log.info("Criando Pedido");
         return Response.status(Status.CREATED).entity(pedidoService.create(dto)).build();
     }
 }

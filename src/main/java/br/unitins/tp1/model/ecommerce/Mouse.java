@@ -28,7 +28,17 @@ public class Mouse extends Produto{
     @JoinColumn(name = "id_mouse")
     private List<Sensor> listaSensors;
 
+    @Column(name = "nome_imagem")
+    private String nomeImagem;
     
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
+
     public String getIluminacao() {
         return iluminacao;
     }

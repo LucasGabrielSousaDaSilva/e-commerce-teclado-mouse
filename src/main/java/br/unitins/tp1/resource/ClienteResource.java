@@ -2,6 +2,7 @@ package br.unitins.tp1.resource;
 
 import br.unitins.tp1.dto.pessoa.ClienteDTO;
 import br.unitins.tp1.service.pessoa.ClienteService;
+import io.quarkus.logging.Log;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -26,28 +27,33 @@ public class ClienteResource {
     @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
+        Log.infof("Executando o metodo findById. Id: %s", id.toString());
         return Response.ok(clienteService.findById(id)).build();
     }
 
     @GET
     public Response findAll() {
+        Log.info("Executando o findAll");
         return Response.ok(clienteService.findAll()).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
     public Response findByNome(@PathParam("nome") String nome) {
+        Log.info("Executando o findByNome");
         return Response.ok(clienteService.findByNome(nome)).build();
     }
 
     @POST
     public Response create(ClienteDTO dto) {
+        Log.info("Criando um novo cliente");
         return Response.status(Status.CREATED).entity(clienteService.create(dto)).build();
     }
 
     @PUT
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, ClienteDTO dto) {
+        Log.debugf("DTO Atualizado: %s", dto);
         clienteService.update(id, dto);
         return Response.status(Status.NO_CONTENT).build();
     }
@@ -55,6 +61,7 @@ public class ClienteResource {
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") Long id) {
+        Log.infof("Deletando cliente. Id: %s", id.toString());
         clienteService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }

@@ -2,6 +2,8 @@ package br.unitins.tp1.resource;
 
 import br.unitins.tp1.dto.produto.ModeloDTO;
 import br.unitins.tp1.service.ModeloService;
+import io.quarkus.logging.Log;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -27,30 +29,40 @@ public class ModeloResource {
     @GET
 
     @Path("/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findById(@PathParam("id") Long id) {
+        Log.infof("Executando o metodo findById. Id: %s", id.toString()); 
         return Response.ok(modeloService.findById(id)).build();
     }
 
     @GET
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll() {
+        Log.info("Executando o findAll");
         return Response.ok(modeloService.findAll()).build();
     }
 
     @POST
+    @RolesAllowed("Funcionario")
     public Response create(@Valid ModeloDTO dto) {
+        Log.info("Criando um novo Modelo");
         return Response.status(Status.CREATED).entity(modeloService.create(dto)).build();
     }
 
     @PUT
     @Path("/{id}")
+    @RolesAllowed("Funcionario")
     public Response update(@PathParam("id") Long id, ModeloDTO dto) {
+        Log.debugf("DTO Atualizado: %s", dto);
         modeloService.update(id, dto);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed("Funcionario")
     public Response delete(@PathParam("id") Long id) {
+        Log.infof("Deletando. Id: %s", id.toString());
         modeloService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }

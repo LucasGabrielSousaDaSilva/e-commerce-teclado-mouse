@@ -2,6 +2,8 @@ package br.unitins.tp1.resource;
 
 import br.unitins.tp1.dto.pedido.FormaPagamentoDTO;
 import br.unitins.tp1.service.pedido.FormaPagamentoService;
+import io.quarkus.logging.Log;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -24,17 +26,23 @@ public class FormaPagamentoResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findById(@PathParam("id") long id){
+        Log.info("Executando o metodo findById. Id: %s");
         return Response.ok(formaPagamentoService.findById(id)).build();
     }
 
     @GET
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(){
+        Log.info("Executando o findAll");
         return Response.ok(formaPagamentoService.findAll()).build();
     }
 
     @POST
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response create(FormaPagamentoDTO dto) {
+        Log.info("Criando um nova forma de pagamento");
         return Response.status(Status.CREATED).entity(formaPagamentoService.create(dto)).build();
     }
 }

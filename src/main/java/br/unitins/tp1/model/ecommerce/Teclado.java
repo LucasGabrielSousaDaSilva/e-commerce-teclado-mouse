@@ -24,6 +24,17 @@ public class Teclado extends Produto{
     @JoinColumn(name="id_construcao")
     private Construcao construcao;
 
+    @Column(name = "nome_imagem")
+    private String nomeImagem;
+    
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
+
     public String getLayout() {
         return layout;
     }
