@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.produto.ModeloDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.ws.rs.core.MediaType;
 
 @QuarkusTest
 public class ModeloResourceTest {
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -24,6 +26,7 @@ public class ModeloResourceTest {
     }
     
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest(){
         given()
             .when()
@@ -34,6 +37,7 @@ public class ModeloResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest(){
         ModeloDTO dto = new ModeloDTO(
             "furi", 
@@ -52,6 +56,7 @@ public class ModeloResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void updateTest(){
         ModeloDTO dto = new ModeloDTO("Super", "256384g");
 
@@ -66,6 +71,7 @@ public class ModeloResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
         given()
             .when()

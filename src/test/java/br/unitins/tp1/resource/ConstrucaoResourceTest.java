@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.produto.ConstrucaoDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.ws.rs.core.MediaType;
 
 import static io.restassured.RestAssured.given;
@@ -15,6 +16,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class ConstrucaoResourceTest {
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -25,6 +27,7 @@ public class ConstrucaoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest(){
         given()
             .when()
@@ -35,6 +38,7 @@ public class ConstrucaoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByCor(){
         given()
             .when()
@@ -45,6 +49,7 @@ public class ConstrucaoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest(){
         ConstrucaoDTO dto = new ConstrucaoDTO(
             20.1f, 
@@ -66,6 +71,7 @@ public class ConstrucaoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void updateTest(){
         ConstrucaoDTO dto = new ConstrucaoDTO(
             3.5f, 
@@ -84,6 +90,7 @@ public class ConstrucaoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
 
         given()

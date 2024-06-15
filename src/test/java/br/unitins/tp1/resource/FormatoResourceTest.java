@@ -7,12 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.produto.FormatoDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.ws.rs.core.MediaType;
 
 @QuarkusTest
 public class FormatoResourceTest {
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -23,6 +25,7 @@ public class FormatoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest() {
         given()
             .when()
@@ -33,6 +36,7 @@ public class FormatoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest(){
         FormatoDTO dto = new FormatoDTO(
             3.5f,
@@ -50,6 +54,7 @@ public class FormatoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void updateTest(){
         FormatoDTO dto = new FormatoDTO(3.1f, 4.2f);
 
@@ -64,6 +69,7 @@ public class FormatoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
 
         given()

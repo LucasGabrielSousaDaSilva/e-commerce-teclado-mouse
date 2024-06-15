@@ -1,12 +1,15 @@
 package br.unitins.tp1.resource;
 
 import br.unitins.tp1.dto.pessoa.ClienteDTO;
+import br.unitins.tp1.dto.update.UpdateSenhaDTO;
+import br.unitins.tp1.dto.update.UpdateUsernameDTO;
 import br.unitins.tp1.service.pessoa.ClienteService;
 import io.quarkus.logging.Log;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -65,5 +68,20 @@ public class ClienteResource {
         clienteService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
-    
+
+    @PATCH
+    @Path("/update-password/{id}")
+    public Response updateUsuarioSenha(@PathParam("id") Long id, UpdateSenhaDTO dto){
+        Log.info("Atualizando senha");
+        clienteService.updateUsuarioPassword(id, dto);
+        return Response.status(Status.NO_CONTENT).build();
+    }
+
+    @PATCH
+    @Path("/update-username/{id}")
+    public Response updateUsuarioUsername(@PathParam("id") Long id, UpdateUsernameDTO dto){
+        Log.info("Atualizando username");
+        clienteService.updateUsuarioUsername(id, dto);
+        return Response.status(Status.NO_CONTENT).build();
+    }
 }

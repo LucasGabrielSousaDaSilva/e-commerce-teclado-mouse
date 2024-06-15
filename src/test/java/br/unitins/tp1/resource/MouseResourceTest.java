@@ -11,12 +11,14 @@ import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.produto.MouseDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.ws.rs.core.MediaType;
 
 @QuarkusTest
 public class MouseResourceTest {
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -26,6 +28,7 @@ public class MouseResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest(){
         given()
             .when()
@@ -36,6 +39,7 @@ public class MouseResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void FindByNomeTest(){
         given()
             .when()
@@ -46,6 +50,7 @@ public class MouseResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest(){
         MouseDTO dto = new MouseDTO(
             "Acer", 
@@ -85,6 +90,7 @@ public class MouseResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void updateTest(){
         MouseDTO dto = new MouseDTO(
             "Acer", 
@@ -111,6 +117,7 @@ public class MouseResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
 
         given()

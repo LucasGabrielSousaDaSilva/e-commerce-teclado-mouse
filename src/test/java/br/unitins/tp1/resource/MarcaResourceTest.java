@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.produto.MarcaDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.ws.rs.core.MediaType;
 
 import static io.restassured.RestAssured.given;
@@ -14,6 +15,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class MarcaResourceTest {
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest() {
         given()
             .when()
@@ -23,6 +25,7 @@ public class MarcaResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest() {
         given()
             .when()
@@ -33,6 +36,7 @@ public class MarcaResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void FindByNomeTest(){
         given()
             .when()
@@ -43,6 +47,7 @@ public class MarcaResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest() {
         MarcaDTO dto = new MarcaDTO(
             "Jump", 
@@ -60,6 +65,7 @@ public class MarcaResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void updateTest(){
         MarcaDTO dto = new MarcaDTO(
             "Vault", 
@@ -76,6 +82,7 @@ public class MarcaResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
         
         given()

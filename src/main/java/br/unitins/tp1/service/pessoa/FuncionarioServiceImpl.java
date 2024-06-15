@@ -5,6 +5,8 @@ import java.util.List;
 import br.unitins.tp1.dto.pessoa.FuncionarioDTO;
 import br.unitins.tp1.dto.pessoa.FuncionarioResponseDTO;
 import br.unitins.tp1.dto.pessoa.UsuarioResponseDTO;
+import br.unitins.tp1.dto.update.UpdateSenhaDTO;
+import br.unitins.tp1.dto.update.UpdateUsernameDTO;
 import br.unitins.tp1.model.pessoa.Funcionario;
 import br.unitins.tp1.model.pessoa.Pessoa;
 import br.unitins.tp1.model.pessoa.Usuario;
@@ -12,15 +14,15 @@ import br.unitins.tp1.repository.pessoa.FuncionarioRepository;
 import br.unitins.tp1.repository.pessoa.PessoaRepository;
 import br.unitins.tp1.repository.pessoa.UsuarioRepository;
 import br.unitins.tp1.service.hash.HashService;
+import br.unitins.tp1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import jakarta.ws.rs.NotFoundException;
 
 @ApplicationScoped
 public class FuncionarioServiceImpl implements FuncionarioService{
-    
-
 
     @Inject
     public FuncionarioRepository funcionarioRepository;
@@ -108,4 +110,33 @@ public class FuncionarioServiceImpl implements FuncionarioService{
         Funcionario funcionario = funcionarioRepository.findByUsernameAndSenha(username, senha);
         return UsuarioResponseDTO.valueOf(funcionario.getPessoa());
     }
+
+    @Override
+    public void updateUsuarioPassword(Long id, UpdateSenhaDTO dto) {
+        Usuario usuario = usuarioRepository.findById(id);
+        String hashSenhaAntiga = hashService.getHashSenha(dto.oldPassword());
+
+        if (usuario != null) {
+            if (usuario.getSenha().equals(hashSenhaAntiga)) {
+                String hashNovaSenha = hashService.getHashSenha(dto.newPassword());
+                usuario.setSenha(hashNovaSenha);
+            } else {
+                throw new ValidationException("ERRO", "Senha antiga nao corresponde");
+            }
+        } else {
+            throw new NotFoundException();
+        }
+    }
+
+    @Override
+    public void updateUsuarioUsername(Long id, UpdateUsernameDTO dto) {
+        Usuario usuario = usuarioRepository.findById(id);
+
+        if (usuario != null) {
+            usuario.setUsername(dto.newUsername());;
+        } else {
+            throw new NotFoundException();
+        }
+    }
+    
 }

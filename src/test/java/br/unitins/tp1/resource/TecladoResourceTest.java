@@ -10,12 +10,14 @@ import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.produto.TecladoDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.ws.rs.core.MediaType;
 
 @QuarkusTest
 public class TecladoResourceTest {
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -26,6 +28,7 @@ public class TecladoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest(){
         given()
             .when()
@@ -36,6 +39,7 @@ public class TecladoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void FindByNomeTest(){
         given()
             .when()
@@ -46,6 +50,7 @@ public class TecladoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest(){
         TecladoDTO dto = new TecladoDTO(
             "Mancer", 
@@ -81,6 +86,7 @@ public class TecladoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void updateTest(){
         TecladoDTO dto = new TecladoDTO(
             "Acer", 
@@ -106,6 +112,7 @@ public class TecladoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
         given()
             .when()

@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.dto.produto.SensorDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.ws.rs.core.MediaType;
 
 @QuarkusTest
 public class SensorResourceTest {
     
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -23,6 +25,7 @@ public class SensorResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest(){
         given()
             .when()
@@ -33,6 +36,7 @@ public class SensorResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void FindByNomeTest(){
         given()
             .when()
@@ -43,6 +47,7 @@ public class SensorResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest(){
         SensorDTO dto = new SensorDTO(
             "Races", 
@@ -66,6 +71,7 @@ public class SensorResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void updateTest(){
         SensorDTO dto = new SensorDTO(
             "Fast", 
@@ -85,6 +91,7 @@ public class SensorResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
 
         given()
