@@ -29,7 +29,7 @@ public class SensorResourceTest {
     public void findByIdTest(){
         given()
             .when()
-            .pathParam("id", 1)
+            .pathParam("id", 2)
             .get("/sensor/{id}")
             .then()
             .statusCode(200);
@@ -84,7 +84,7 @@ public class SensorResourceTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(dto)
                 .when()
-                .pathParam("id", 2)
+                .pathParam("id", 4)
                 .put("/sensor/{id}")
                 .then()
                 .statusCode(204);

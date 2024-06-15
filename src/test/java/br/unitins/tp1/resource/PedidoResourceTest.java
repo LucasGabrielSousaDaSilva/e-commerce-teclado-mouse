@@ -12,6 +12,7 @@ import br.unitins.tp1.dto.pedido.ItemPedidoDTO;
 import br.unitins.tp1.dto.pedido.PedidoDTO;
 import br.unitins.tp1.service.pedido.PedidoService;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.MediaType;
 
@@ -22,6 +23,7 @@ public class PedidoResourceTest {
     public PedidoService service;
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest() {
         given()
                 .when()
@@ -31,6 +33,7 @@ public class PedidoResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest() {
         given()
                 .when()

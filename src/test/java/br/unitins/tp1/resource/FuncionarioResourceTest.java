@@ -16,6 +16,7 @@ import jakarta.ws.rs.core.MediaType;
 public class FuncionarioResourceTest {
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -37,6 +38,7 @@ public class FuncionarioResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void FindByNomeTest(){
         given()
         .when()
@@ -81,7 +83,7 @@ public class FuncionarioResourceTest {
     }
 
     @Test
-    // @TestSecurity(user = "user", roles = {"Funcionario"})
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
         given()
             .when()

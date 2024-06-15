@@ -3,6 +3,7 @@ package br.unitins.tp1.resource;
 import br.unitins.tp1.dto.pedido.PedidoDTO;
 import br.unitins.tp1.service.pedido.PedidoService;
 import io.quarkus.logging.Log;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -25,12 +26,14 @@ public class PedidoResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findById(@PathParam("id") long id){
         Log.info("Executando o metodo findById. Id: %s"); 
         return Response.ok(pedidoService.findById(id)).build();
     }
 
     @GET
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll(){
         Log.info("Executando o findAll");
         return Response.ok(pedidoService.findAll()).build();
@@ -38,6 +41,7 @@ public class PedidoResource {
 
     @GET
     @Path("/search/cliente/{cliente}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findByCliente(@PathParam("cliente") Long cliente){
         Log.info("Executando o metodo findByCliente");
         return Response.ok(pedidoService.findByCliente(cliente)).build();

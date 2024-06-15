@@ -5,6 +5,7 @@ import br.unitins.tp1.dto.update.UpdateSenhaDTO;
 import br.unitins.tp1.dto.update.UpdateUsernameDTO;
 import br.unitins.tp1.service.pessoa.ClienteService;
 import io.quarkus.logging.Log;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -29,12 +30,14 @@ public class ClienteResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findById(@PathParam("id") Long id) {
         Log.infof("Executando o metodo findById. Id: %s", id.toString());
         return Response.ok(clienteService.findById(id)).build();
     }
 
     @GET
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findAll() {
         Log.info("Executando o findAll");
         return Response.ok(clienteService.findAll()).build();
@@ -42,12 +45,14 @@ public class ClienteResource {
 
     @GET
     @Path("/search/nome/{nome}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response findByNome(@PathParam("nome") String nome) {
         Log.info("Executando o findByNome");
         return Response.ok(clienteService.findByNome(nome)).build();
     }
 
     @POST
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response create(ClienteDTO dto) {
         Log.info("Criando um novo cliente");
         return Response.status(Status.CREATED).entity(clienteService.create(dto)).build();
@@ -55,6 +60,7 @@ public class ClienteResource {
 
     @PUT
     @Path("/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response update(@PathParam("id") Long id, ClienteDTO dto) {
         Log.debugf("DTO Atualizado: %s", dto);
         clienteService.update(id, dto);
@@ -63,6 +69,7 @@ public class ClienteResource {
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response delete(@PathParam("id") Long id) {
         Log.infof("Deletando cliente. Id: %s", id.toString());
         clienteService.delete(id);
@@ -71,6 +78,7 @@ public class ClienteResource {
 
     @PATCH
     @Path("/update-password/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response updateUsuarioSenha(@PathParam("id") Long id, UpdateSenhaDTO dto){
         Log.info("Atualizando senha");
         clienteService.updateUsuarioPassword(id, dto);
@@ -79,6 +87,7 @@ public class ClienteResource {
 
     @PATCH
     @Path("/update-username/{id}")
+    @RolesAllowed({"Funcionario", "Cliente"})
     public Response updateUsuarioUsername(@PathParam("id") Long id, UpdateUsernameDTO dto){
         Log.info("Atualizando username");
         clienteService.updateUsuarioUsername(id, dto);

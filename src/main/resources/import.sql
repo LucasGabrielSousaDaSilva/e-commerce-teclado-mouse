@@ -29,9 +29,9 @@ insert into teclado (id, layout, design, tipoTeclado, iluminacao, id_construcao)
 
 -- Pessoas
 
-insert into usuario(username, senha) values ('Lucas', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjMiLCJuYW1lIjoiTHVjYXMiLCJpYXQiOjE1MTYyMzkwMjJ9.rhXZeFSvavRfJN_zDauRpsOKpiPcxab-DFlrIBph8Bc');
+insert into usuario(username, senha) values ('Lucas', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==');
 -- Senha 123
-insert into usuario(username, senha) values ('Gabriel', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NTYiLCJuYW1lIjoiR2FicmllbCIsImlhdCI6MTUxNjIzOTAyMn0.J-jIgzgF4bqLgyExvXme98hUzBzAVml68How6IxFxz8');
+insert into usuario(username, senha) values ('Gabriel', 'rbG/jwSrRjqmOCOlERtiprbcq7n8M3fsOUFzAH50hzc29X0aO4vouJzeZOzLtIRwNaDNRRKVa0c6751aBhYpwA==');
 -- senha 456
 
 insert into pessoa (nome, idade, email, id_usuario) values('Lucas', 18, 'teste@teste', 1);

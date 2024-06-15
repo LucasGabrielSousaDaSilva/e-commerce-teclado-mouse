@@ -39,6 +39,7 @@ public class FuncionarioResource {
     }
 
     @GET
+    @RolesAllowed("Funcionario")
     public Response findAll() {
         Log.info("Executando o findAll");
         return Response.ok(clienteService.findAll()).build();
@@ -46,12 +47,14 @@ public class FuncionarioResource {
 
     @GET
     @Path("/search/nome/{nome}")
+    @RolesAllowed("Funcionario")
     public Response findByNome(@PathParam("nome") String nome) {
         Log.info("Executando o findByNome");
         return Response.ok(clienteService.findByNome(nome)).build();
     }
 
     @POST
+    @RolesAllowed("Funcionario")
     public Response create(@Valid ClienteDTO dto) {
         Log.infof("Funcionario criado com sucesso. Nome: %d", dto.nome());
         return Response.status(Status.CREATED).entity(clienteService.create(dto)).build();
@@ -59,6 +62,7 @@ public class FuncionarioResource {
 
     @PUT
     @Path("/{id}")
+    @RolesAllowed("Funcionario")
     public Response update(@PathParam("id") Long id, ClienteDTO dto) {
         Log.debugf("DTO Atualizado: %s", dto);
         clienteService.update(id, dto);
@@ -67,6 +71,7 @@ public class FuncionarioResource {
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed("Funcionario")
     public Response delete(@PathParam("id") Long id) {
         Log.infof("Deletando. Id: %s", id.toString());
         clienteService.delete(id);
@@ -75,6 +80,7 @@ public class FuncionarioResource {
 
     @PATCH
     @Path("/update-password/{id}")
+    @RolesAllowed("Funcionario")
     public Response updateUsuarioSenha(@PathParam("id") Long id, UpdateSenhaDTO dto){
         Log.info("Atualizando senha");
         clienteService.updateUsuarioPassword(id, dto);
@@ -83,6 +89,7 @@ public class FuncionarioResource {
 
     @PATCH
     @Path("/update-username/{id}")
+    @RolesAllowed("Funcionario")
     public Response updateUsuarioUsername(@PathParam("id") Long id, UpdateUsernameDTO dto){
         Log.info("Atualizando username");
         clienteService.updateUsuarioUsername(id, dto);

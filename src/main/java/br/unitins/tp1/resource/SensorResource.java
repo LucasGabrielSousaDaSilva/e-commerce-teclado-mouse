@@ -28,7 +28,7 @@ public class SensorResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"Funcionario", "Cliente"})
+    @RolesAllowed("Funcionario")
     public Response findById(@PathParam("id") Long id) {
         Log.infof("Executando o metodo findById. Id: %s", id.toString()); 
         return Response.ok(sensorService.findById(id)).build();

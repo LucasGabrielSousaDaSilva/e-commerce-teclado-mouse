@@ -17,6 +17,7 @@ import jakarta.ws.rs.core.MediaType;
 public class ClienteResourceTest {
     
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findAllTest(){
         given()
             .when()
@@ -27,6 +28,7 @@ public class ClienteResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void findByIdTest(){
         given()
             .when()
@@ -37,6 +39,7 @@ public class ClienteResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void FindByNomeTest(){
         given()
             .when()
@@ -47,6 +50,7 @@ public class ClienteResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void createTest() {
         ClienteDTO dto = new ClienteDTO(
             "Speed", 16, "teste@teste.com", 
@@ -88,7 +92,7 @@ public class ClienteResourceTest {
     }
 
     @Test
-    // @TestSecurity(user = "user", roles = {"Funcionario"})
+    @TestSecurity(user = "user", roles = {"Funcionario"})
     public void deleteTest(){
         
         given()

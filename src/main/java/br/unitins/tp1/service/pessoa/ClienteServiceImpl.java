@@ -135,7 +135,7 @@ public class ClienteServiceImpl implements ClienteService{
         Cliente cliente = clienteRepository.findByUsernameAndSenha(username, senha);
         if (cliente == null) {
             throw new NullPointerException("cliente não encontrado");
-        }
+        }else
         return UsuarioResponseDTO.valueOf(cliente.getPessoa());
     }
 
