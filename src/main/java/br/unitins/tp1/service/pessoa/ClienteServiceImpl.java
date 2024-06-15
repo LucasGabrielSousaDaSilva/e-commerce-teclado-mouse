@@ -133,6 +133,9 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     public UsuarioResponseDTO login(String username, String senha) {
         Cliente cliente = clienteRepository.findByUsernameAndSenha(username, senha);
+        if (cliente == null) {
+            throw new NullPointerException("cliente não encontrado");
+        }
         return UsuarioResponseDTO.valueOf(cliente.getPessoa());
     }
 
